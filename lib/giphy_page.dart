@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:giphy_test_task/giphy_repository.dart';
@@ -12,13 +14,37 @@ class GiphyPage extends StatefulWidget {
 
 class _GiphyPageState extends State<GiphyPage> {
   late final GiphyRepository _giphyRepository;
-  late final Future<List<GiphyResponse>> _giphyFuture;
+  late Future<List<GiphyResponse>> _giphyFuture;
+  final TextEditingController _searchController = TextEditingController();
+  Timer? _debouncer;
+
+  void _debounceSearch() {
+    if (_debouncer != null) {
+      _debouncer?.cancel();
+    }
+    _debouncer = Timer(const Duration(seconds: 3), () {
+      final query = _searchController.text;
+      setState(() {
+        _giphyFuture = _giphyRepository.getGifs(query);
+      });
+    });
+  }
 
   @override
   void initState() {
     super.initState();
     _giphyRepository = context.read();
-    _giphyFuture = _giphyRepository.getGifs();
+    _giphyFuture = Future.value([]);
+    _searchController.addListener(() {
+      _debounceSearch();
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _debouncer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -36,9 +62,12 @@ class _GiphyPageState extends State<GiphyPage> {
             final gifs = snapShot.data ?? [];
             return Column(
               children: [
+                TextFormField(
+                  controller: _searchController,
+                ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: 10,
+                    itemCount: gifs.length,
                     itemBuilder: (context, index) {
                       return Image.network(gifs[index].images.original.url);
                     },
