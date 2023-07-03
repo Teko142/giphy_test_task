@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:giphy_test_task/giphy_response.dart';
 
 class GiphyApiClient {
-
   final Dio _dio;
 
   GiphyApiClient(this._dio);
 
-  Future<List<GiphyResponse>> getBooks() async {
-    final response = await _dio.get('search?api_key=4Vb0sQlasZ6ZDE4MlrQkv6G92vWF7Mkh&q=a');
+  Future<List<GiphyResponse>> getGifs(String search) async {
+    final response =
+        await _dio.get('search?api_key=4Vb0sQlasZ6ZDE4MlrQkv6G92vWF7Mkh&q=$search');
     final data = (response.data['data']) as List<dynamic>;
     print("Api: $data");
     final mapped = data
@@ -17,6 +17,4 @@ class GiphyApiClient {
     print("Api 2: $mapped");
     return mapped;
   }
-
-
 }

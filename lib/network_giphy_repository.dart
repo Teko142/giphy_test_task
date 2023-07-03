@@ -8,9 +8,8 @@ class NetworkGiphyRepository implements GiphyRepository {
   NetworkGiphyRepository(this._giphyApiClient);
 
   @override
-  Future<List<GiphyResponse>> getGifs() async {
-    final books = await _giphyApiClient.getBooks();
-    return books;
+  Future<List<GiphyResponse>> getGifs(search) async {
+    final gifs = await _giphyApiClient.getGifs(search);
+    return gifs;
   }
-
 }

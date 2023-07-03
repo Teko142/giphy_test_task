@@ -22,8 +22,8 @@ void main() {
       request: true,
     ),
   );
-  final giphyApiClinet = GiphyApiClient(dio);
-  final networkGiphyRepository = NetworkGiphyRepository(giphyApiClinet);
+  final giphyApiClient = GiphyApiClient(dio);
+  final networkGiphyRepository = NetworkGiphyRepository(giphyApiClient);
   final giphyRepositoryProvider = RepositoryProvider<GiphyRepository>(
     create: (context) => networkGiphyRepository,
   );
