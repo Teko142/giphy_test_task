@@ -66,12 +66,22 @@ class _GiphyPageState extends State<GiphyPage> {
                   controller: _searchController,
                 ),
                 Expanded(
-                  child: ListView.builder(
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                    ),
                     itemCount: gifs.length,
                     itemBuilder: (context, index) {
                       return Image.network(gifs[index].images.original.url);
                     },
                   ),
+                  /*ListView.builder(
+                    itemCount: gifs.length,
+                    itemBuilder: (context, index) {
+                      return Image.network(gifs[index].images.original.url);
+                    },
+                  ),*/
                 ),
               ],
             );
