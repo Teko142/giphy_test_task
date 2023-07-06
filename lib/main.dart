@@ -1,25 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:giphy_test_task/giphy_api_client.dart';
-import 'package:giphy_test_task/giphy_page.dart';
-import 'package:giphy_test_task/giphy_repository.dart';
-import 'package:giphy_test_task/network_giphy_repository.dart';
+import 'package:giphy_test_task/data/giphy_api_client.dart';
+import 'package:giphy_test_task/data/network_giphy_repository.dart';
+import 'package:giphy_test_task/domain/giphy_repository.dart';
+import 'package:giphy_test_task/presentation/giphy_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   final dio = Dio(
     BaseOptions(
       baseUrl: "https://api.giphy.com/v1/gifs/",
-    ),
-  );
-  dio.interceptors.add(
-    LogInterceptor(
-      responseBody: true,
-      requestBody: true,
-      requestHeader: true,
-      responseHeader: true,
-      request: true,
     ),
   );
   final giphyApiClient = GiphyApiClient(dio);
@@ -33,7 +24,7 @@ void main() {
       providers: [
         giphyRepositoryProvider,
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         home: GiphyPage(),
       ),
     ),
