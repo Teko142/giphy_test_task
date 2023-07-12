@@ -1,16 +1,13 @@
 # giphy_test_task
 
-A new Flutter project.
+This app is designed to test a candidate's skills. The application displays a list of Gif images by
+keyword search.
 
-## Getting Started
+## Todo
 
-This project is a starting point for a Flutter application.
+The application is not yet finalized and needs improvement:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- After scrolling to the very end of the list, instead of the UI loading additional gifs, the
+  application updates the entire UI and displays both the old list of gifs and the loaded one
+- Unit-tests need improvement
+- Api-key needs to be saved in a separate file
