@@ -5,6 +5,7 @@ import 'package:giphy_test_task/data/giphy_api_client.dart';
 import 'package:giphy_test_task/data/network_giphy_repository.dart';
 import 'package:giphy_test_task/domain/giphy_repository.dart';
 import 'package:giphy_test_task/presentation/giphy_page.dart';
+import 'package:giphy_test_task/presentation/main_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +26,7 @@ void main() {
         giphyRepositoryProvider,
       ],
       child: const MaterialApp(
-        home: GiphyPage(),
+        home: MainPage(),
       ),
     ),
   );

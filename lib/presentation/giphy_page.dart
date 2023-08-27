@@ -60,6 +60,7 @@ class _GiphyPageState extends State<GiphyPage> {
     setState(() {
       _isFirstLoadRunning = false;
     });
+    // additional value
   }
 
   void _debounceSearch() {
@@ -106,9 +107,30 @@ class _GiphyPageState extends State<GiphyPage> {
             final gifs = snapShot.data ?? [];
             return Column(
               children: [
-                TextFormField(
-                  controller: _searchController,
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextFormField(
+                    controller: _searchController,
+                    decoration: InputDecoration(
+                      hintText: "Start gifs search...",
+                      hintStyle: const TextStyle(
+                        color: Colors.grey,
+                      ),
+                      prefixIcon: const Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
+                if (gifs.isNotEmpty)
+                  const Text(
+                    "Click on a gif to add it to your favorites",
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 Expanded(
                   child: GridView.builder(
                     gridDelegate:
@@ -118,7 +140,12 @@ class _GiphyPageState extends State<GiphyPage> {
                     controller: _controller,
                     itemCount: gifs.length,
                     itemBuilder: (context, index) {
-                      return Image.network(gifs[index].images.original.url);
+                      return GestureDetector(
+                        onTap: () {
+                          _giphyRepository.addToFavorite(gifs[index]);
+                        },
+                        child: Image.network(gifs[index].images.original.url),
+                      );
                     },
                   ),
                 ),
