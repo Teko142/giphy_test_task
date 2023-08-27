@@ -14,5 +14,6 @@ class GiphyApiClient {
         .map<GiphyResponse>((item) => GiphyResponse.fromJson(item))
         .toList();
     return mapped;
+
   }
 }
