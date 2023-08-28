@@ -45,9 +45,12 @@ class _AddedGifsState extends State<AddedGifs> {
             return Column(
               children: [
                 if (gifs.isNotEmpty)
-                  const Text(
-                    "Click on a gif to delete it from your favorites",
-                    style: TextStyle(color: Colors.grey),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: const Text(
+                      "Click on a gif to delete it from your favorites",
+                      style: TextStyle(color: Colors.grey),
+                    ),
                   ),
                 if (gifs.isEmpty) const Spacer(),
                 if (gifs.isEmpty)

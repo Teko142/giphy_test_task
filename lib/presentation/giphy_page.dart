@@ -67,7 +67,7 @@ class _GiphyPageState extends State<GiphyPage> {
     if (_debouncer != null) {
       _debouncer?.cancel();
     }
-    _debouncer = Timer(const Duration(seconds: 3), () {
+    _debouncer = Timer(const Duration(seconds: 2), () {
       _offset = 0;
       _query = _searchController.text;
       setState(() {
@@ -127,9 +127,12 @@ class _GiphyPageState extends State<GiphyPage> {
                   ),
                 ),
                 if (gifs.isNotEmpty)
-                  const Text(
-                    "Click on a gif to add it to your favorites",
-                    style: TextStyle(color: Colors.grey),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: const Text(
+                      "Click on a gif to add it to your favorites",
+                      style: TextStyle(color: Colors.grey),
+                    ),
                   ),
                 Expanded(
                   child: GridView.builder(
