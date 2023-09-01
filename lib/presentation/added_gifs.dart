@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:giphy_test_task/data/giphy_response.dart';
 import 'package:giphy_test_task/domain/giphy_repository.dart';
 
@@ -47,15 +48,15 @@ class _AddedGifsState extends State<AddedGifs> {
                 if (gifs.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: const Text(
-                      "Click on a gif to delete it from your favorites",
+                    child: Text(
+                      AppLocalizations.of(context)!.deletingInfo,
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),
                 if (gifs.isEmpty) const Spacer(),
                 if (gifs.isEmpty)
-                  const Text(
-                    'Your favorite GIFs will be here',
+                  Text(
+                    AppLocalizations.of(context)!.favoritePageInfo,
                     style: TextStyle(color: Colors.grey),
                   ),
                 if (gifs.isEmpty) const Spacer(),

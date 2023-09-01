@@ -1,0 +1,8 @@
+{
+  "searchIconText": "Search",
+  "favoriteIconText": "Saved",
+  "searchField": "Start gifs search...",
+  "searchInfo": "Click on a gif to add it to your favorites",
+  "deletingInfo": "Click on a gif to delete it from your favorites",
+  "favoritePageInfo": "Your favorite GIFs will be here"
+}

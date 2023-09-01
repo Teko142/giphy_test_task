@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:giphy_test_task/data/giphy_response.dart';
 import 'package:giphy_test_task/domain/giphy_repository.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class GiphyPage extends StatefulWidget {
   const GiphyPage({super.key});
@@ -112,7 +114,7 @@ class _GiphyPageState extends State<GiphyPage> {
                   child: TextFormField(
                     controller: _searchController,
                     decoration: InputDecoration(
-                      hintText: "Start gifs search...",
+                      hintText: AppLocalizations.of(context)!.searchField,
                       hintStyle: const TextStyle(
                         color: Colors.grey,
                       ),
@@ -129,8 +131,8 @@ class _GiphyPageState extends State<GiphyPage> {
                 if (gifs.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: const Text(
-                      "Click on a gif to add it to your favorites",
+                    child: Text(
+                      AppLocalizations.of(context)!.searchInfo,
                       style: TextStyle(color: Colors.grey),
                     ),
                   ),

@@ -4,6 +4,8 @@ import 'package:giphy_test_task/data/giphy_response.dart';
 import 'package:giphy_test_task/domain/giphy_repository.dart';
 import 'package:giphy_test_task/presentation/added_gifs.dart';
 import 'package:giphy_test_task/presentation/giphy_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -45,14 +47,14 @@ class _MainPageState extends State<MainPage> {
             _selectedTabIndex = index;
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: "Search",
+            label: AppLocalizations.of(context)!.searchIconText
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: "Saved",
+            label: AppLocalizations.of(context)!.favoriteIconText,
           ),
         ],
       ),
