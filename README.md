@@ -5,9 +5,9 @@ keyword search.
 
 ## Implemented features
 
-- Connect Giphy API
+- Connecting Giphy API
 - Gif search
-- Adding gif to favorite
+- Adding/deleting gif to/from favorite
 - En/ru localization
 - Launching icon
 - Separated Api-key
