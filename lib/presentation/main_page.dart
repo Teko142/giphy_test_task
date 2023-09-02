@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:giphy_test_task/data/giphy_response.dart';
 import 'package:giphy_test_task/domain/giphy_repository.dart';
 import 'package:giphy_test_task/presentation/added_gifs.dart';
 import 'package:giphy_test_task/presentation/giphy_page.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -18,7 +17,6 @@ class _MainPageState extends State<MainPage> {
   late final GiphyRepository _giphyRepository;
   Future<List<GiphyResponse>>? gifsFuture;
 
-
   @override
   void initState() {
     super.initState();
@@ -27,6 +25,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   var _selectedTabIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,14 +33,15 @@ class _MainPageState extends State<MainPage> {
         index: _selectedTabIndex,
         children: [
           const GiphyPage(),
-          AddedGifs(giphyRepository: _giphyRepository,)
+          AddedGifs(
+            giphyRepository: _giphyRepository,
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTabIndex,
         unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.blue,
-
         onTap: (index) {
           setState(() {
             _selectedTabIndex = index;
@@ -49,9 +49,8 @@ class _MainPageState extends State<MainPage> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: AppLocalizations.of(context)!.searchIconText
-          ),
+              icon: Icon(Icons.search),
+              label: AppLocalizations.of(context)!.searchIconText),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: AppLocalizations.of(context)!.favoriteIconText,

@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:giphy_test_task/data/giphy_response.dart';
 import 'package:giphy_test_task/domain/giphy_repository.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class GiphyPage extends StatefulWidget {
   const GiphyPage({super.key});

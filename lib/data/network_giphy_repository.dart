@@ -29,4 +29,3 @@ class NetworkGiphyRepository implements GiphyRepository {
     _faveGifs.remove(gif);
   }
 }
-
